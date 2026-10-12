@@ -1,0 +1,13 @@
+# Windows 系统文件
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# macOS
+.DS_Store
+
+# 本地开发工具配置
+.claude/
+
+# 保研申请材料 —— 含身份证、学生证等敏感个人信息，切勿提交公开仓库
+保研/

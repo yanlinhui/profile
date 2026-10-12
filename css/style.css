@@ -1,0 +1,631 @@
+/* ============================================================
+   科研个人主页 — 全局样式
+   设计基调：纸、墨与印泥（paper · ink · seal-crimson）
+   ============================================================ */
+
+:root {
+  /* ---- 色彩 ---- */
+  --paper:        #FAF9F5;  /* 纸白：页面背景 */
+  --ink:          #1F1F1D;  /* 墨黑：正文文字 */
+  --muted:        #6E6C64;  /* 次级灰：机构、年份前缀、说明文字 */
+  --line:         #E3E0D6;  /* 分隔线：hairline 边框 */
+  --crimson:      #7A2E2E;  /* 枣红：强调色（链接 hover、编号、年份短线、当前语言） */
+  --crimson-deep: #5F2323;  /* 深枣红：按压/更强 hover */
+  --crimson-tint: #F1E9E7;  /* 枣红浅底：选中态、BibTeX 块底色 */
+
+  /* ---- 字体 ---- */
+  --font-serif: Charter, Georgia, "Source Serif 4",
+                "Songti SC", STSong, SimSun, serif;
+  --font-sans: -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB",
+               "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  --font-mono: Consolas, "SF Mono", Menlo, monospace;
+
+  /* ---- 排版 ---- */
+  --fs-body: 1.0625rem;   /* 17px 正文 */
+  --lh-body: 1.75;        /* 中文行高 */
+  --fs-small: 0.8125rem;  /* 13px 次级信息 */
+
+  /* ---- 布局 ---- */
+  --container: 840px;
+  --section-gap: 4.5rem;
+}
+
+/* ============ 基础 ============ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--crimson-tint); }
+
+:focus-visible {
+  outline: 2px solid var(--crimson);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ============ 链接 ============ */
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+a:hover {
+  color: var(--crimson);
+  text-decoration-color: var(--crimson);
+}
+
+/* ============ Header 与导航 ============ */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(250, 249, 245, 0.92);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 1.1rem 0 0.7rem;
+}
+
+.header-name {
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.name-cn { font-weight: 700; }
+
+.name-en {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-left: 0.6rem;
+}
+
+.header-affil {
+  color: var(--muted);
+  font-size: var(--fs-small);
+  margin-top: 0.2rem;
+}
+
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: var(--fs-small);
+  flex-shrink: 0;
+  padding-bottom: 0.15rem;
+}
+
+.lang-toggle button {
+  border: 0;
+  background: none;
+  cursor: pointer;
+  padding: 0.1rem 0;
+  font: inherit;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+.lang-toggle button[aria-pressed="true"] {
+  color: var(--crimson);
+  font-weight: 600;
+}
+
+.lang-toggle .sep { color: var(--line); }
+
+.site-nav {
+  display: flex;
+  gap: 1.4rem;
+  padding-bottom: 0.9rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.site-nav::-webkit-scrollbar { display: none; }
+
+.site-nav a {
+  font-size: var(--fs-small);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.site-nav a:hover { color: var(--crimson); }
+
+/* ============ 板块骨架 ============ */
+
+.section {
+  margin-top: var(--section-gap);
+  scroll-margin-top: 8.5rem;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.4;
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+}
+
+.sec-no {
+  color: var(--crimson);
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.sec-no::after {
+  content: "·";
+  margin-left: 0.65rem;
+  color: var(--muted);
+}
+
+/* ============ 01 关于 ============ */
+
+.about-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  margin-top: 1.6rem;
+}
+
+.avatar {
+  width: 128px;
+  height: 192px;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+  object-fit: cover;
+  background: var(--crimson-tint);
+}
+
+.about-text p + p { margin-top: 1em; }
+
+.contact-row {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.2rem;
+  font-size: var(--fs-small);
+}
+
+/* ============ 02 研究方向 ============ */
+
+.interest-list {
+  margin-top: 1.6rem;
+  display: grid;
+  gap: 0.85rem;
+  max-width: 44rem;
+}
+
+.interest-kw {
+  font-weight: 600;
+  margin-right: 0.55rem;
+}
+
+.interest-desc { color: var(--muted); }
+
+/* ============ 03 经历（时间线） ============ */
+
+.exp-subhead {
+  font-size: var(--fs-small);
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-top: 2.2rem;
+}
+
+.exp-subhead:first-child { margin-top: 1.6rem; }
+
+.timeline {
+  margin-top: 1.1rem;
+  border-left: 1px solid var(--line);
+  padding-left: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+}
+
+.tl-item { position: relative; }
+
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.5rem - 4.5px);
+  top: 0.5em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 2px solid var(--crimson);
+}
+
+.tl-period {
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  font-size: var(--fs-small);
+}
+
+.tl-head { font-weight: 600; margin-top: 0.15rem; }
+
+.tl-sub { color: var(--muted); }
+
+/* ============ 04 论文 ============ */
+
+.pub-group { margin-top: 2.2rem; }
+
+.pub-year {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  scroll-margin-top: 8.5rem;
+}
+
+.pub-year::before {
+  content: "";
+  width: 2.5rem;
+  height: 2px;
+  background: var(--crimson);
+  flex-shrink: 0;
+}
+
+.pub-year::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+.pub-list {
+  margin-top: 1.1rem;
+  display: grid;
+  gap: 1.4rem;
+}
+
+.pub-item {
+  position: relative;
+  padding-left: 3.2rem;
+  scroll-margin-top: 8.5rem;
+}
+
+.pub-num {
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  font-family: var(--font-serif);
+  color: var(--crimson);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.pub-title { font-weight: 600; }
+
+.pub-star { color: var(--crimson); margin-left: 0.3rem; }
+
+.pub-authors { margin-top: 0.15rem; }
+
+.pub-authors .me { font-weight: 700; }
+
+.pub-venue {
+  color: var(--muted);
+  font-size: var(--fs-small);
+  margin-top: 0.15rem;
+}
+
+.pub-note {
+  color: var(--crimson);
+  font-size: var(--fs-small);
+  margin-top: 0.15rem;
+}
+
+.pub-links {
+  margin-top: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 1.1rem;
+  font-size: var(--fs-small);
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.6875rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  padding: 0.05rem 0.4rem;
+  vertical-align: middle;
+  margin-right: 0.45rem;
+  white-space: nowrap;
+}
+
+.tag-ongoing {
+  color: var(--crimson);
+  border-color: var(--crimson);
+}
+
+/* BibTeX 折叠 */
+.pub-bibtex {
+  margin-top: 0.5rem;
+  font-size: var(--fs-small);
+}
+
+.pub-bibtex summary {
+  display: inline-block;
+  cursor: pointer;
+  list-style: none;
+  color: var(--muted);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.pub-bibtex summary:hover {
+  color: var(--crimson);
+  text-decoration-color: var(--crimson);
+}
+
+.pub-bibtex summary::-webkit-details-marker { display: none; }
+
+.pub-bibtex summary::before {
+  content: "▸ ";
+  color: var(--crimson);
+}
+
+.pub-bibtex[open] summary::before { content: "▾ "; }
+
+.pub-bibtex pre {
+  margin-top: 0.6rem;
+  padding: 0.9rem 1rem;
+  background: var(--crimson-tint);
+  border-left: 2px solid var(--crimson);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+/* ============ 05 项目 ============ */
+
+.proj-grid {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.proj-card {
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 1.2rem 1.3rem;
+}
+
+.proj-name { font-weight: 600; }
+
+.proj-meta {
+  color: var(--muted);
+  font-size: var(--fs-small);
+  margin-top: 0.35rem;
+}
+
+.proj-desc {
+  margin-top: 0.6rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+/* ============ 06 奖项 ============ */
+
+.award-subhead,
+.course-subhead {
+  font-size: var(--fs-small);
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-top: 2.2rem;
+}
+
+.award-group:first-child .award-subhead { margin-top: 1.6rem; }
+
+.award-list {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.award-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.15rem 1.5rem;
+  align-items: baseline;
+}
+
+.award-name { font-weight: 500; }
+
+.award-level {
+  color: var(--muted);
+  font-size: var(--fs-small);
+  white-space: nowrap;
+}
+
+/* ============ 04 课程成绩 ============ */
+
+.stat-row {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem 1.2rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.stat { display: flex; flex-direction: column; gap: 0.1rem; }
+
+.stat-value {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: var(--fs-small);
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.course-group:first-child .course-subhead { margin-top: 1.8rem; }
+
+.course-list {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.55rem 3rem;
+}
+
+.course-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+/* 无成绩的条目（证书），占满整格 */
+.course-item-plain { grid-template-columns: 1fr; }
+
+.course-name {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.course-grade {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  min-width: 2.4rem;
+  text-align: right;
+}
+
+.course-grade.grade-high { color: var(--crimson); }
+.course-grade.grade-good { color: var(--ink); }
+.course-grade.grade-low  { color: var(--muted); font-weight: 400; }
+
+/* ============ 08 生活剪影 ============ */
+
+.photo-grid {
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.photo-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 3px;
+  border: 1px solid var(--line);
+  background: var(--crimson-tint);
+}
+
+/* ============ Footer ============ */
+
+.site-footer {
+  margin-top: 5rem;
+  border-top: 1px solid var(--line);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 1.8rem 0 2.8rem;
+  color: var(--muted);
+  font-size: var(--fs-small);
+}
+
+/* ============ 响应式 ============ */
+
+@media (max-width: 640px) {
+  :root { --section-gap: 3.5rem; }
+
+  body { font-size: 1rem; }
+
+  .header-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.4rem;
+  }
+
+  .lang-toggle { align-self: flex-end; margin-top: -2.1rem; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+
+  .avatar { width: 96px; height: 144px; }
+
+  .pub-item { padding-left: 2.4rem; }
+
+  .stat-row { grid-template-columns: repeat(3, 1fr); }
+
+  .course-list { grid-template-columns: 1fr; gap: 0.5rem; }
+
+  .photo-grid { grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+
+  .proj-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ 打印（简易 CV） ============ */
+
+@media print {
+  .site-header, .lang-toggle, .photo-grid { display: none; }
+
+  body { background: #fff; font-size: 10.5pt; }
+
+  .section { margin-top: 2rem; }
+
+  a { text-decoration: none; color: inherit; }
+}
+
+/* ============ 动效偏好 ============ */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  * { transition: none !important; }
+}

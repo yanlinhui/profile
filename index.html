@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>延琳慧 — 个人主页</title>
+<meta name="description" content="延琳慧，西南大学商贸学院大数据管理与应用专业本科生，研究方向为数据挖掘、机器学习与城市计算。">
+<link rel="icon" href="./assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-top">
+      <div>
+        <h1 class="header-name">
+          <span class="name-cn">延琳慧</span>
+          <span class="name-en">Linhui YAN</span>
+        </h1>
+        <p class="header-affil" data-i18n="affil">西南大学商贸学院 · 大数据管理与应用</p>
+      </div>
+      <div class="lang-toggle" role="group" aria-label="语言 / Language">
+        <button type="button" data-lang="zh" aria-pressed="true">中文</button>
+        <span class="sep" aria-hidden="true">|</span>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="页面导航">
+      <a href="#about"        data-i18n="navAbout">关于</a>
+      <a href="#research"     data-i18n="navResearch">研究方向</a>
+      <a href="#experience"   data-i18n="navExp">教育与经历</a>
+      <a href="#coursework"   data-i18n="navCourse">课程成绩</a>
+      <a href="#output"       data-i18n="navPubs">学术成果</a>
+      <a href="#projects"     data-i18n="navProjects">科研项目</a>
+      <a href="#awards"       data-i18n="navAwards">荣誉奖项</a>
+      <a href="#life"         data-i18n="navLife">生活剪影</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- ── 01 关于 ─────────────────────────────────────────── -->
+  <section id="about" class="section">
+    <h2 class="section-title"><span class="sec-no">01</span><span data-i18n="secAbout">关于</span></h2>
+    <div class="about-grid">
+      <img class="avatar" src="./assets/img/avatar.jpg" alt="延琳慧的照片" width="128" height="192">
+      <div class="about-text">
+        <p data-i18n="bio1">延琳慧，西南大学商贸学院大数据管理与应用专业 2023 级本科生。学业成绩排名 1/97（前 1%），绩点 4.21/5，曾获国家奖学金、西南大学一等奖学金，具备推免资格。研究兴趣集中在数据挖掘、机器学习与城市计算，关注管理科学与工程、数据科学与公共政策的交叉议题。</p>
+        <p data-i18n="bio2">以第一作者身份在 ICAIBD 2026、ICCCBDA 2026 发表两篇 EI 会议论文，围绕重庆两江新区二手房市场的价格驱动机制展开研究；作为第一学生发明人拥有已公开发明专利 1 项，作为第一著作人登记计算机软件著作权 3 项。</p>
+        <p data-i18n="bio3">长期参与科研项目与学术写作，熟悉 Python 数据分析、机器学习建模与文本挖掘。计划继续攻读研究生并长期从事学术研究，欢迎通过邮件交流。</p>
+        <div class="contact-row">
+          <a href="mailto:2773577292@qq.com">2773577292@qq.com</a>
+          <a href="mailto:swu999ylh@gmail.com">swu999ylh@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 02 研究方向 ─────────────────────────────────────── -->
+  <section id="research" class="section">
+    <h2 class="section-title"><span class="sec-no">02</span><span data-i18n="secResearch">研究方向</span></h2>
+    <div id="interest-list" class="interest-list"></div>
+  </section>
+
+  <!-- ── 03 教育与经历 ───────────────────────────────────── -->
+  <section id="experience" class="section">
+    <h2 class="section-title"><span class="sec-no">03</span><span data-i18n="secExp">教育与经历</span></h2>
+    <p class="exp-subhead" data-i18n="expEdu">教育经历</p>
+    <div id="edu-timeline" class="timeline"></div>
+    <p class="exp-subhead" data-i18n="expWork">实习经历</p>
+    <div id="work-timeline" class="timeline"></div>
+    <p class="exp-subhead" data-i18n="expService">学生工作与志愿服务</p>
+    <div id="service-timeline" class="timeline"></div>
+  </section>
+
+  <!-- ── 04 课程成绩 ─────────────────────────────────────── -->
+  <section id="coursework" class="section">
+    <h2 class="section-title"><span class="sec-no">04</span><span data-i18n="secCourse">课程成绩</span></h2>
+    <div id="course-stats" class="stat-row"></div>
+    <div id="course-groups"></div>
+  </section>
+
+  <!-- ── 05 学术成果 ─────────────────────────────────────── -->
+  <section id="output" class="section">
+    <h2 class="section-title"><span class="sec-no">05</span><span data-i18n="secPubs">学术成果</span></h2>
+    <div id="pub-container"></div>
+    <noscript>
+      <p class="pub-venue">学术成果列表由 JavaScript 渲染，请启用 JavaScript 查看。</p>
+    </noscript>
+  </section>
+
+  <!-- ── 06 科研项目 ─────────────────────────────────────── -->
+  <section id="projects" class="section">
+    <h2 class="section-title"><span class="sec-no">06</span><span data-i18n="secProjects">科研项目</span></h2>
+    <div id="proj-grid" class="proj-grid"></div>
+  </section>
+
+  <!-- ── 07 荣誉奖项 ─────────────────────────────────────── -->
+  <section id="awards" class="section">
+    <h2 class="section-title"><span class="sec-no">07</span><span data-i18n="secAwards">荣誉奖项</span></h2>
+    <div id="award-list" class="award-list"></div>
+  </section>
+
+  <!-- ── 08 生活剪影 ─────────────────────────────────────── -->
+  <section id="life" class="section">
+    <h2 class="section-title"><span class="sec-no">08</span><span data-i18n="secLife">生活剪影</span></h2>
+    <div class="photo-grid">
+      <img src="./assets/img/life/life-1.jpg" alt="生活照 1" width="640" height="1138">
+      <img src="./assets/img/life/life-2.jpg" alt="生活照 2" width="640" height="1138">
+      <img src="./assets/img/life/life-3.jpg" alt="生活照 3" width="640" height="1138">
+      <img src="./assets/img/life/life-4.jpg" alt="生活照 4" width="640" height="1138">
+      <img src="./assets/img/life/life-5.jpg" alt="生活照 5" width="640" height="1138">
+      <img src="./assets/img/life/life-6.jpg" alt="生活照 6" width="640" height="1138">
+      <img src="./assets/img/life/life-7.jpg" alt="生活照 7" width="640" height="1138">
+      <img src="./assets/img/life/life-8.jpg" alt="生活照 8" width="640" height="1138">
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <span data-i18n="footerCopy">© 2026 延琳慧</span>
+      <span data-i18n="footerUpdated">最后更新：2026 年 10 月</span>
+    </div>
+  </div>
+</footer>
+
+<script src="./js/i18n.js" defer></script>
+<script src="./js/data.js" defer></script>
+<script src="./js/main.js" defer></script>
+
+</body>
+</html>
