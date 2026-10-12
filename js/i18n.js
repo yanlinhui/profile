@@ -32,7 +32,7 @@
 
     bio1: 'Linhui Yan is an undergraduate in the School of Business at Southwest University, majoring in Big Data Management and Application (Class of 2027). She ranks 1st out of 97 in her cohort (top 1%) with a GPA of 4.21/5, and has received the National Scholarship and the SWU First-Class Scholarship. Her research interests lie in data mining, machine learning, and urban computing, at the intersection of management science, data science, and public policy.',
     bio2: 'She has published two first-author EI conference papers at ICAIBD 2026 and ICCCBDA 2026, both on the price drivers of the second-hand housing market in Chongqing Liangjiang New Area. She is the first student inventor of a published invention patent and the first author of three registered software copyrights.',
-    bio3: 'She has long been involved in research projects and academic writing, and is proficient in Python data analysis, machine learning modeling, and text mining. She plans to pursue graduate study and a long-term academic career, and welcomes correspondence by email.',
+    bio3: 'She has been admitted through the recommendation-based (exam-exempt) track to the integrated M.Sc.–Ph.D. program in Statistics at the School of Statistics and Data Science, Shanghai University of Finance and Economics, beginning in 2027. She has long been involved in research projects and academic writing, and is proficient in Python data analysis, machine learning modeling, and text mining. She aspires to a long-term academic career and welcomes correspondence by email.',
 
     expEdu:     'Education',
     expWork:    'Internships',

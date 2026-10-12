@@ -37,6 +37,12 @@ window.DATA = {
   /* ── 03 教育经历 ─────────────────────────────────────── */
   education: [
     {
+      period: { zh: '2027 年起（预计）', en: 'From 2027 (expected)' },
+      head:   { zh: '硕博连读 · 上海财经大学统计与数据科学学院',
+                en: 'Integrated M.Sc.–Ph.D. Program · School of Statistics and Data Science, Shanghai University of Finance and Economics' },
+      sub:    { zh: '统计学 · 学制五年 · 已获推免录取', en: 'Statistics · five-year program · Admitted via the recommendation-based track' }
+    },
+    {
       period: { zh: '2023 – 2027（预计）', en: '2023 – 2027 (expected)' },
       head:   { zh: '本科 · 西南大学商贸学院', en: 'B.Sc. · School of Business, Southwest University' },
       sub:    { zh: '大数据管理与应用专业 · 学业排名 1/97（前 1%）· 绩点 4.21/5',
